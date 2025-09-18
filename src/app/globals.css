@@ -1,26 +1,211 @@
 @import "tailwindcss";
 
+/* Global color tokens used to ensure consistent light/dark styling across the app.
+   Components still use Tailwind utility classes; these variables provide a consistent
+   baseline and smooth transitions when toggling themes.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light theme (default): white background, black text */
+  --bg: #ffffff;
+  --card: #ffffff; /* panels/cards */
+  --muted: #6b7280; /* secondary text */
+  --text: #000000; /* primary text */
+  --primary: #2563eb; /* blue-600 for buttons */
+  --accent: #7c3aed;
+  --glass: rgba(255,255,255,0.9);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  /* Dark theme */
+  --bg: #0b1220; /* page background - dark */
+  --card: #0f1724; /* card / panel background */
+  --muted: #9aa7b8; /* muted in dark */
+  --text: #e6eef8; /* light text */
+  --primary: #6366f1; /* indigo */
+  --accent: #7c3aed;
+  --glass: rgba(2,6,23,0.6);
+}
+
+/* Apply base background and text using the variables so pages that rely on
+   non-tailwind classes still follow theme. Tailwind dark: utilities will
+   continue to work as before.
+*/
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Cards / panels using a .card helper will pick up correct bg automatically */
+.card {
+  background-color: var(--card);
+  color: var(--text);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* small utility to smooth color changes globally */
+* {
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+/* Override common Tailwind utility classes using our theme variables so adding
+   the .dark class to <html> or <body> will switch colors consistently.
+   We use !important sparingly to ensure these rules win over utility classes
+   when necessary for theme switching.
+*/
+
+/* Dark mode (applies when .dark is present on html or body) */
+.dark .bg-white,
+body.dark .bg-white {
+  background-color: var(--card) !important;
+}
+
+.dark .bg-indigo-50,
+body.dark .bg-indigo-50 {
+  background-color: rgba(79,70,229,0.06) !important;
+}
+.dark .bg-green-50,
+body.dark .bg-green-50 {
+  background-color: rgba(16,185,129,0.06) !important;
+}
+.dark .bg-yellow-50,
+body.dark .bg-yellow-50 {
+  background-color: rgba(245,158,11,0.06) !important;
+}
+
+.dark .text-gray-800,
+body.dark .text-gray-800 {
+  color: var(--text) !important;
+}
+.dark .text-gray-700,
+body.dark .text-gray-700 {
+  color: var(--muted) !important;
+}
+.dark .text-gray-600,
+body.dark .text-gray-600 {
+  color: var(--muted) !important;
+}
+.dark .text-gray-500,
+body.dark .text-gray-500 {
+  color: var(--muted) !important;
+}
+.dark .text-gray-400,
+body.dark .text-gray-400 {
+  color: var(--muted) !important;
+}
+
+/* Ensure header/footer backgrounds respond to theme */
+.dark header,
+body.dark header,
+.dark footer,
+body.dark footer {
+  background-color: var(--card) !important;
+  color: var(--text) !important;
+}
+
+/* Buttons and primary accents */
+.dark .bg-indigo-600,
+body.dark .bg-indigo-600 {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+/* Cards helper class: prefer using .card on panels to inherit theme */
+.card {
+  background-color: var(--card);
+  color: var(--text);
+}
+
+
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
 
+/* Ensure body uses the theme variables (no gradient overrides) */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
 }
+
+/* Ensure explicit light-mode mappings (override Tailwind utilities) */
+.bg-white {
+  background-color: var(--card) !important;
+}
+.text-gray-800, .text-gray-900 {
+  color: var(--text) !important;
+}
+.text-gray-700, .text-gray-600, .text-gray-500, .text-gray-400 {
+  color: var(--muted) !important;
+}
+.bg-indigo-600 {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+}
+.bg-indigo-50 {
+  background-color: rgba(79,70,229,0.06) !important;
+}
+.bg-green-50 { background-color: rgba(16,185,129,0.06) !important; }
+.bg-yellow-50 { background-color: rgba(245,158,11,0.06) !important; }
+
+/* Cards helper ensures panels pick correct bg/text in light mode too */
+.card { background-color: var(--card) !important; color: var(--text) !important; }
+
+
+body:not(.dark) .card,
+body:not(.dark) .p-4,
+body:not(.dark) .p-6,
+body:not(.dark) .rounded-lg {
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06), 0 2px 6px rgba(2,6,23,0.04);
+  border: 1px solid rgba(2,6,23,0.04);
+  transform: translateZ(0);
+}
+
+/* Softer cards in dark mode */
+.dark .card,
+body.dark .card,
+.dark .p-4,
+body.dark .p-4,
+.dark .p-6,
+body.dark .p-6,
+.dark .rounded-lg,
+body.dark .rounded-lg {
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Footer quick links color in dark mode */
+.dark footer a,
+body.dark footer a {
+  color: var(--muted) !important;
+}
+
+/* Ensure header/footer text is readable in both modes */
+header, footer {
+  color: var(--text) !important;
+}
+
+/* Force header background to follow theme variable (override utility classes) */
+header {
+  background-color: var(--card) ;
+  color: var(--text);
+}
+
+
+/* Dark-mode overrides (when .dark is present) - keep these specific so removing .dark returns to light vars */
+.dark .bg-white, body.dark .bg-white { background-color: var(--card) !important; }
+.dark .text-gray-800, body.dark .text-gray-800 { color: var(--text) !important; }
+.dark .text-gray-700, body.dark .text-gray-700 { color: var(--muted) !important; }
+.dark .bg-indigo-600, body.dark .bg-indigo-600 { background-color: var(--primary) !important; color: #fff !important; }
