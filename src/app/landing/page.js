@@ -149,10 +149,7 @@ export default function LandingPage() {
                 <h3 className="font-semibold text-lg">{t('Analytics')}</h3>
                 <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Generate insights and reports on student performance and trends.')}</p>
               </div>
-              <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
-                <h3 className="font-semibold text-lg">{t('Feedback')}</h3>
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Collect and manage feedback from students and staff.')}</p>
-              </div>
+        
             </div>
         </section>
       </main>
@@ -177,10 +174,12 @@ export default function LandingPage() {
             <h4 className="font-semibold">{t('Get the App')}</h4>
             <p className="text-sm text-gray-600 mt-2">{t('Download our mobile app')}</p>
             <div className="flex items-center gap-3 mt-4">
-              <a href="#" className="inline-block">
+              <a href="https://drive.google.com/uc?export=download&id=1gbU3xuA3FGe_SVdrXVQxBmjXY-83srAV
+" download className="inline-block">
                 <img src="/playstore-badge.png" alt="Get it on Google Play" className="h-12" />
               </a>
-              <a href="#" className="inline-block">
+              <a href="https://drive.google.com/uc?export=download&id=1gbU3xuA3FGe_SVdrXVQxBmjXY-83srAV
+" className="inline-block">
                 <img src="/appstore-badge.png" alt="Download on the App Store" className="h-12" />
               </a>
             </div>

@@ -73,19 +73,10 @@ export default function StudentERPPage() {
         {/* On dashboard we hide full navbar and only show profile (no toggle) */}
         <Header toggleDarkMode={() => {}} darkMode={false} setSidebarOpen={setSidebarOpen} showToggle={false} showNav={false} />
 
-        <main className="h-full overflow-y-auto">
+        <main className="h-full  overflow-y-auto">
           <div className="container px-6 mx-auto py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <aside className="md:col-span-1 bg-white rounded-lg p-6 shadow dark:bg-gray-800">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Student Details</h3>
-                <div className="mt-4 text-sm text-gray-600 dark:text-gray-300 space-y-2">
-                  <p><span className="font-medium text-gray-700 dark:text-gray-200">Name:</span> {student?.name || session.user.name}</p>
-                  <p><span className="font-medium text-gray-700 dark:text-gray-200">Email:</span> {session.user.email}</p>
-                  <p><span className="font-medium text-gray-700 dark:text-gray-200">Class:</span> {student?.class || ''}</p>
-                  <p><span className="font-medium text-gray-700 dark:text-gray-200">Percentage:</span> {student?.percentage ? `${student.percentage}%` : ''}</p>
-                  <p><span className="font-medium text-gray-700 dark:text-gray-200">Unique ID:</span> {session.user.id}</p>
-                </div>
-              </aside>
+            <div className="grid">
+              
 
               <section className="md:col-span-2 bg-white rounded-lg p-6 shadow dark:bg-gray-800">
                 {/* Render selected module */}
