@@ -31,7 +31,7 @@ export default function Fees() {
           <div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
             <p>Upcoming dues:</p>
             <ul className="mt-2">
-              {upcomingDues.map((u, i) => <li key={i}>{u.term} — Due {u.due} — <span className="font-semibold">${u.amount}</span></li>)}
+              {upcomingDues.map((u, i) => <li key={i}>{u.term} — Due {u.due} — <span className="font-semibold">Rs. {u.amount}</span></li>)}
             </ul>
           </div>
         </div>
