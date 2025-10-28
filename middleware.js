@@ -24,8 +24,14 @@ export const config = {
     "/grades/:path*",
     "/exams/:path*",
     "/fees/:path*",
+<<<<<<< HEAD
     "/analytics/:path*",
     "/erp/:path*",
     "/admin/:path*"
   ]
 };
+=======
+    "/analytics/:path*"
+  ]
+};
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0

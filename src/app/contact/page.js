@@ -28,6 +28,10 @@ export default function ContactPage() {
           <nav className="space-x-6 hidden md:flex items-center">
             <Link href="/" className="text-gray-700 dark:text-gray-200">{t('Home')}</Link>
             <Link href="/contact" className="text-gray-700 dark:text-gray-200">{t('Contact Us')}</Link>
+<<<<<<< HEAD
+=======
+            <Link href="/auth/email" className="text-gray-700 dark:text-gray-200">{t('Sign In')}</Link>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
 
             <button
               onClick={() => {
@@ -69,6 +73,10 @@ export default function ContactPage() {
               <div className="px-6 pb-4 space-y-2">
                 <Link href="/" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Home')}</Link>
                 <Link href="/contact" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Contact Us')}</Link>
+<<<<<<< HEAD
+=======
+                <Link href="/auth/email" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Sign In')}</Link>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
                 <button onClick={() => { const isDark = document.documentElement.classList.toggle('dark'); try { localStorage.setItem('darkMode', isDark.toString()); } catch (e) {} setDarkMode(isDark); setMenuOpen(false); }} className="block text-gray-700 dark:text-gray-200">{t('Toggle Light / Dark')}</button>
               </div>
             </div>

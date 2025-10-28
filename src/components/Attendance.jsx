@@ -1,12 +1,30 @@
 // src/components/Attendance.jsx
+<<<<<<< HEAD
 export default function Attendance() {
   // class-level quick stats
   const classes = [
+=======
+import { useSession } from 'next-auth/react';
+
+export default function Attendance() {
+  const { data: session } = useSession();
+
+  // class-level quick stats
+  const allClasses = [
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
     { name: '10-A', total: 30, present: 28 },
     { name: '9-B', total: 30, present: 27 },
     { name: '11-C', total: 30, present: 25 },
   ];
 
+<<<<<<< HEAD
+=======
+  // Select class based on user id
+  const userId = parseInt(session?.user?.id) || 0;
+  const classIndex = userId % 3;
+  const classes = [allClasses[classIndex]];
+
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
   // monthly breakdown and recent absent days
   const monthly = [
     { month: 'January', present: 20, total: 22 },
@@ -24,7 +42,11 @@ export default function Attendance() {
     <div>
       <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Attendance</h2>
 
+<<<<<<< HEAD
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+=======
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
         {classes.map((c) => {
           const percent = Math.round((c.present / c.total) * 100);
           return (
@@ -39,9 +61,12 @@ export default function Attendance() {
             </div>
           );
         })}
+<<<<<<< HEAD
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+=======
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
         <div className="p-4 bg-white rounded-lg shadow dark:bg-gray-800">
           <p className="text-sm text-gray-500">Overall Attendance</p>
           <p className="text-2xl font-semibold text-gray-800 dark:text-gray-100">{overall}%</p>
@@ -49,6 +74,7 @@ export default function Attendance() {
             <div className="bg-indigo-600 h-3 rounded-full" style={{ width: `${overall}%` }} />
           </div>
         </div>
+<<<<<<< HEAD
 
         <div className="md:col-span-2 bg-white rounded-lg p-4 shadow dark:bg-gray-800">
           <h3 className="font-semibold text-gray-800 dark:text-gray-200">Monthly Attendance</h3>
@@ -72,6 +98,31 @@ export default function Attendance() {
             })}
           </ul>
         </div>
+=======
+      </div>
+
+      <div className="bg-white rounded-lg p-4 shadow dark:bg-gray-800 mb-6">
+        <h3 className="font-semibold text-gray-800 dark:text-gray-200">Monthly Attendance</h3>
+        <ul className="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+          {monthly.map((m) => {
+            const pct = Math.round((m.present / m.total) * 100);
+            return (
+              <li key={m.month} className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium text-gray-800 dark:text-gray-200">{m.month}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{m.present}/{m.total} days</p>
+                </div>
+                <div className="w-1/2">
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                    <div className="bg-green-500 h-3 rounded-full" style={{ width: `${pct}%` }} />
+                  </div>
+                </div>
+                <div className="ml-3 text-sm text-gray-600 dark:text-gray-300">{pct}%</div>
+              </li>
+            );
+          })}
+        </ul>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
       </div>
 
       <div className="bg-white rounded shadow p-4 dark:bg-gray-800">

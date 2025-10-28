@@ -11,8 +11,15 @@ export default function Exams({ student }) {
   ];
 
   const results = [
+<<<<<<< HEAD
     { name: 'Alice Johnson', subject: 'Math', marks: 92 },
     { name: 'Bob Smith', subject: 'Math', marks: 78 },
+=======
+    { subject: 'Math', total: 100, marks: 92 },
+    { subject: 'English', total: 100, marks: 78 },
+     { subject: 'Hindi', total: 100, marks: 87 },
+      { subject: 'Computer', total: 100, marks: 50 }
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
   ];
 
 
@@ -37,6 +44,56 @@ export default function Exams({ student }) {
         <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">Admit Card</h3>
         <button
           className="px-4 py-2 font-semibold text-white bg-purple-600 rounded hover:bg-purple-700"
+<<<<<<< HEAD
+=======
+          onClick={() => {
+            const content = `
+              <html>
+                <head>
+                  <title>Admit Card</title>
+                  <style>
+                    body { font-family: Arial, sans-serif; padding: 20px; }
+                    h1 { text-align: center; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                    th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+                  </style>
+                </head>
+                <body>
+                  <h1>Sunderdeep World School</h1>
+                  <p><strong>Name:</strong> ${student?.name || ''}</p>
+          <p><strong>Roll No:</strong> ${student?.rollNo || Math.floor(Math.random() * 9000) + 1000}</p>
+          <p><strong>Class:</strong> ${student?.className || '10-A'}</p>
+                  <h2>Subjects and Timings</h2>
+                  <table>
+                    <thead>
+                      <tr><th>Subject</th><th>Date</th><th>Time</th></tr>
+                    </thead>
+                    <tbody>
+                      ${upcoming.map(e => `
+                        <tr>
+                          <td>${e.subject}</td>
+                          <td>${e.date}</td>
+                          <td>${e.time}</td>
+                        </tr>
+                      `).join('')}
+                    </tbody>
+                  </table>
+                </body>
+              </html>
+            `;
+            const newWindow = window.open('', '_blank', 'width=800,height=600');
+            if (newWindow) {
+              newWindow.document.write(content);
+              newWindow.document.close();
+              newWindow.focus();
+              newWindow.print();
+              // Do not close immediately to allow user to see/print
+              // newWindow.close();
+            } else {
+              alert('Popup blocked. Please allow popups for this website.');
+            }
+          }}
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
         >
           Download Admit Card
         </button>
@@ -48,16 +105,26 @@ export default function Exams({ student }) {
           <table className="w-full text-sm text-left text-gray-600 dark:text-gray-300">
             <thead className="text-xs uppercase text-gray-500 border-b dark:border-gray-700">
               <tr>
+<<<<<<< HEAD
                 <th className="py-2 px-3">Student</th>
                 <th className="py-2 px-3">Subject</th>
+=======
+                <th className="py-2 px-3">Subject</th>
+                <th className="py-2 px-3">Total</th>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
                 <th className="py-2 px-3">Marks</th>
               </tr>
             </thead>
             <tbody>
               {results.map((r, i) => (
                 <tr key={i} className="border-b dark:border-gray-700">
+<<<<<<< HEAD
                   <td className="py-2 px-3">{r.name}</td>
                   <td className="py-2 px-3">{r.subject}</td>
+=======
+                  <td className="py-2 px-3">{r.subject}</td>
+                  <td className="py-2 px-3">{r.total}</td>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
                   <td className="py-2 px-3">{r.marks}</td>
                 </tr>
               ))}

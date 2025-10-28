@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 // src/app/landing/page-updated.js
+=======
+// src/app/landing/page.js
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
 'use client';
 import { useState, useEffect } from 'react';
 import { toggleTheme, getStoredTheme } from '@/lib/theme';
 import Link from 'next/link';
+<<<<<<< HEAD
 import Image from 'next/image';
+=======
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
 import { signIn } from 'next-auth/react';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/lib/i18n';
@@ -18,6 +25,7 @@ export default function LandingPage() {
     if (typeof window !== 'undefined') {
       const isDark = getStoredTheme();
       setDarkMode(isDark);
+<<<<<<< HEAD
       if (isDark) {
         document.documentElement.classList.add('dark');
         document.body.classList.add('dark');
@@ -25,6 +33,10 @@ export default function LandingPage() {
         document.documentElement.classList.remove('dark');
         document.body.classList.remove('dark');
       }
+=======
+      if (isDark) document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
       setCurrentLang(i18n.language || 'en');
     }
   }, []);
@@ -76,12 +88,18 @@ export default function LandingPage() {
         {menuOpen && (
           <div className="md:hidden" style={{ backgroundColor: 'var(--card)' }}>
             <div className="px-6 pb-4 space-y-2">
+<<<<<<< HEAD
               <Link href="/" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Home')}</Link>
               <Link href="/contact" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Contact Us')}</Link>
               <Link href="/auth/email" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Sign In')}</Link>
               <Link href="/refunds" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Refunds')}</Link>
               <Link href="/privacy-policy" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Privacy Policy')}</Link>
               <Link href="/terms-conditions" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Terms and Conditions')}</Link>
+=======
+              <a href="/" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Home')}</a>
+              <a href="/contact" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Contact Us')}</a>
+              <a href="/auth/email" onClick={() => setMenuOpen(false)} className="block text-gray-700 dark:text-gray-200">{t('Sign In')}</a>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
               {/* Theme toggle inside mobile menu */}
               <button
                 onClick={() => { const isDark = toggleTheme(); setDarkMode(!!isDark); setMenuOpen(false); }}
@@ -111,7 +129,11 @@ export default function LandingPage() {
         )}
       </header>
 
+<<<<<<< HEAD
       <main className="flex-1 landing-main">
+=======
+      <main className="flex-1">
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
         <div className="container mx-auto px-6 py-16">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
@@ -131,6 +153,7 @@ export default function LandingPage() {
           </div>
         </div>
 
+<<<<<<< HEAD
         <section id="features" className="container mx-auto px-6 py-12 ">
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 text-center mb-6">{t('Key Features')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -158,6 +181,36 @@ export default function LandingPage() {
                 <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-200">{t('Feedback')}</h3>
                 <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Collect and manage feedback from students and staff.')}</p>
               </div>
+=======
+        <section id="features" className="container mx-auto px-6 py-12">
+          <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 text-center mb-6">{t('Key Features')}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+                <h3 className="font-semibold text-lg">{t('Attendance Tracking')}</h3>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Monitor attendance easily with daily & monthly reports.')}</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+                <h3 className="font-semibold text-lg">{t('Multilingual Support')}</h3>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Easily switch languages for a personalized experience.')}</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+                <h3 className="font-semibold text-lg">{t('Marks & Grades')}</h3>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Record marks, calculate grades and generate transcripts.')}</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+                <h3 className="font-semibold text-lg">{t('Timetable & Exams')}</h3>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Create timetables and manage exam schedules and results.')}</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+                <h3 className="font-semibold text-lg">{t('Fees Management')}</h3>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Manage student fees, payments, and financial records.')}</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+                <h3 className="font-semibold text-lg">{t('Analytics')}</h3>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('Generate insights and reports on student performance and trends.')}</p>
+              </div>
+        
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
             </div>
         </section>
       </main>
@@ -172,9 +225,15 @@ export default function LandingPage() {
           <div>
             <h4 className="font-semibold">{t('Quick Links')}</h4>
             <ul className="mt-3 space-y-2 text-sm text-gray-600">
+<<<<<<< HEAD
               <li><a href="https://merchant.razorpay.com/policy/PHz237koAmGTCx/refund">{t('Refunds')}</a></li>
               <li><a href="https://merchant.razorpay.com/policy/PHz237koAmGTCx/privacy">{t('Privacy Policy')}</a></li>
               <li><a href="https://merchant.razorpay.com/policy/PHz237koAmGTCx/terms">{t('Terms and Conditions')}</a></li>
+=======
+              <li><a href="#features">{t('Features')}</a></li>
+              <li><a href="#pricing">{t('Sign In')}</a></li>
+              <li><a href="/contact">{t('Contact Us')}</a></li>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
             </ul>
           </div>
 
@@ -182,11 +241,21 @@ export default function LandingPage() {
             <h4 className="font-semibold">{t('Get the App')}</h4>
             <p className="text-sm text-gray-600 mt-2">{t('Download our mobile app')}</p>
             <div className="flex items-center gap-3 mt-4">
+<<<<<<< HEAD
               <a href="#" className="inline-block">
                 <Image src="/playstore-badge.png" alt="Get it on Google Play" className="h-12" />
               </a>
               <a href="#" className="inline-block">
                 <Image src="/appstore-badge.png" alt="Download on the App Store" className="h-12" />
+=======
+              <a href="https://drive.google.com/uc?export=download&id=1gbU3xuA3FGe_SVdrXVQxBmjXY-83srAV
+" download className="inline-block">
+                <img src="/playstore-badge.png" alt="Get it on Google Play" className="h-12" />
+              </a>
+              <a href="https://drive.google.com/uc?export=download&id=1gbU3xuA3FGe_SVdrXVQxBmjXY-83srAV
+" className="inline-block">
+                <img src="/appstore-badge.png" alt="Download on the App Store" className="h-12" />
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
               </a>
             </div>
           </div>
@@ -217,4 +286,8 @@ export default function LandingPage() {
       </footer>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0

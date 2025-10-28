@@ -11,6 +11,7 @@ import {
   ClipboardList,
   FileText,
   X,
+<<<<<<< HEAD
   LogOut,
   Sun,
   Moon
@@ -18,10 +19,18 @@ import {
 import { signOut } from 'next-auth/react';
 
 export default function Sidebar({ activeModule, setActiveModule, sidebarOpen, setSidebarOpen, darkMode, toggleDarkMode }) {
+=======
+  LogOut
+} from 'lucide-react';
+import { signOut } from 'next-auth/react';
+
+export default function Sidebar({ activeModule, setActiveModule, sidebarOpen, setSidebarOpen }) {
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
   const { data: session } = useSession();
 
   // Student-only menu (ordered)
   const menuItems = [
+<<<<<<< HEAD
     { id: 'dashboard', name: 'Dashboard', icon: Home, roles: [ 'admin','student','teacher'] },
     { id: 'attendance', name: 'Attendance', icon: Calendar, roles: ['student', 'teacher'] },
     { id: 'exams', name: 'Exams', icon: ClipboardList, roles: ['student', 'teacher'] },
@@ -38,6 +47,16 @@ export default function Sidebar({ activeModule, setActiveModule, sidebarOpen, se
     // Teacher menu items
     { id: 'teacher-profile', name: 'Profile', icon: FileText, roles: ['teacher'] },
     { id: 'teacher-classes', name: 'Classes', icon: ClipboardList, roles: ['teacher'] },
+=======
+    { id: 'dashboard', name: 'Dashboard', icon: Home, roles: ['student'] },
+    { id: 'attendance', name: 'Attendance', icon: Calendar, roles: ['student'] },
+    { id: 'exams', name: 'Exams', icon: ClipboardList, roles: ['student'] },
+    { id: 'fees', name: 'Fees', icon: CreditCard, roles: ['student'] },
+    { id: 'grades', name: 'Grades', icon: BarChart3, roles: ['student'] },
+    { id: 'timetable', name: 'Timetable', icon: Calendar, roles: ['student'] },
+    { id: 'analytics', name: 'Analytics', icon: BarChart3, roles: ['student'] },
+    { id: 'feedback-form', name: 'Feedback Form', icon: FileText, roles: ['student'] },
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
   ];
 
   const filteredMenuItems = menuItems.filter(item => 
@@ -55,6 +74,7 @@ export default function Sidebar({ activeModule, setActiveModule, sidebarOpen, se
       )}
       
       <aside
+<<<<<<< HEAD
         className={`fixed inset-y-0 left-0 z-30 w-64 sm:w-72 overflow-y-auto transition-transform duration-300 ease-in-out bg-white dark:bg-gray-800 lg:translate-x-0 lg:static lg:inset-0 shadow-xl lg:shadow-none ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
@@ -100,14 +120,51 @@ export default function Sidebar({ activeModule, setActiveModule, sidebarOpen, se
               const Icon = item.icon;
               return (
                 <li key={item.id} className="relative">
+=======
+        className={`fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition-transform duration-300 bg-white dark:bg-gray-800 lg:translate-x-0 lg:static lg:inset-0 ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="flex items-center justify-between p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center">
+              <span className="text-purple-700 font-semibold">{(session?.user?.name || 'S').charAt(0)}</span>
+            </div>
+            <div>
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{session?.user?.name || 'Student'}</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">{session?.user?.id || ''}</div>
+            </div>
+          </div>
+          <button
+            className="lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+            aria-label="Close sidebar"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+        
+        <div className="px-4 py-6">
+          <ul className="mt-6">
+            {filteredMenuItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.id} className="relative px-6 py-3">
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
                   <button
                     onClick={() => {
                       setActiveModule(item.id);
                       setSidebarOpen(false);
                     }}
+<<<<<<< HEAD
                     className={`inline-flex items-center w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base font-semibold transition-all duration-150 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg touch-manipulation ${
                       activeModule === item.id
                         ? 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20'
+=======
+                    className={`inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 ${
+                      activeModule === item.id
+                        ? 'text-purple-600 dark:text-purple-400'
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
                         : 'text-gray-600 dark:text-gray-400'
                     }`}
                   >
@@ -117,13 +174,19 @@ export default function Sidebar({ activeModule, setActiveModule, sidebarOpen, se
                         aria-hidden="true"
                       ></span>
                     )}
+<<<<<<< HEAD
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                     <span className="ml-3 sm:ml-4 truncate">{item.name}</span>
+=======
+                    <Icon className="w-5 h-5" />
+                    <span className="ml-4">{item.name}</span>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
                   </button>
                 </li>
               );
             })}
             
+<<<<<<< HEAD
             <li className="relative mt-8 sm:mt-10">
               <button
                 onClick={() => signOut({ callbackUrl: '/landing' })}
@@ -131,6 +194,15 @@ export default function Sidebar({ activeModule, setActiveModule, sidebarOpen, se
               >
                 <LogOut className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                 <span className="ml-3 sm:ml-4">Logout</span>
+=======
+            <li className="relative px-6 py-3 mt-10">
+              <button
+                onClick={() => signOut({ callbackUrl: '/landing' })}
+                className="inline-flex items-center w-full text-sm font-semibold text-gray-600 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-400"
+              >
+                <LogOut className="w-5 h-5" />
+                <span className="ml-4">Logout</span>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
               </button>
             </li>
           </ul>

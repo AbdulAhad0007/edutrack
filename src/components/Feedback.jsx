@@ -45,7 +45,11 @@ export default function Feedback() {
       <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Feedback Form</h2>
       <p className="mt-4 text-gray-600 dark:text-gray-400">Send us your feedback or report a problem.</p>
       <form onSubmit={handleSubmit} className="mt-6 space-y-4 max-w-lg">
+<<<<<<< HEAD
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-600  dark:text-gray-200">
+=======
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
           <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" className="w-full p-2 border rounded" required />
           <input value={roll} onChange={(e) => setRoll(e.target.value)} placeholder="Roll No" className="w-full p-2 border rounded" required />
           <input value={klass} onChange={(e) => setKlass(e.target.value)} placeholder="Class" className="w-full p-2 border rounded" required />

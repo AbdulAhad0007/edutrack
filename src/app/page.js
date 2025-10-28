@@ -1,5 +1,10 @@
 'use client';
 
+<<<<<<< HEAD
+=======
+import { useSession } from 'next-auth/react';
+import { upsertUser } from '@/lib/firebaseClient';
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
 import { useEffect, useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
@@ -16,6 +21,10 @@ import Analytics from '@/components/Analytics';
 import SettingsPage from '@/app/settings/page';
 
 export default function Home() {
+<<<<<<< HEAD
+=======
+  const { data: session, status } = useSession();
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
   const [darkMode, setDarkMode] = useState(false);
   const [activeModule, setActiveModule] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -66,6 +75,13 @@ export default function Home() {
         document.documentElement.classList.add('dark');
       }
     }
+<<<<<<< HEAD
+=======
+    // Upsert signed-in user to Firestore
+    if (session?.user) {
+      upsertUser(session.user);
+    }
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
   }, []);
 
   useEffect(() => {
@@ -75,6 +91,20 @@ export default function Home() {
     }
   }, [darkMode]);
 
+<<<<<<< HEAD
+=======
+  if (status === 'loading') {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500 mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
   // Always show landing page at root. Users should login to access their ERP at /erp/[uid]
   return <LandingPage />;
 }

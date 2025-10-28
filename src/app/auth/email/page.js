@@ -9,4 +9,8 @@ export default function Page() {
       <EmailAuth />
     </Suspense>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0

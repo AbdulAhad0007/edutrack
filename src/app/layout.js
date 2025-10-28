@@ -12,6 +12,7 @@ export const metadata = {
   description: 'ERP-based integrated student management system',
 };
 
+<<<<<<< HEAD
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -23,6 +24,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen bg-gray-50 dark:bg-gray-900 antialiased`}>
+=======
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
         <Script id="theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: `
           (function() {
             try {

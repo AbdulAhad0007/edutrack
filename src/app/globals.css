@@ -209,6 +209,7 @@ header {
 .dark .text-gray-800, body.dark .text-gray-800 { color: var(--text) !important; }
 .dark .text-gray-700, body.dark .text-gray-700 { color: var(--muted) !important; }
 .dark .bg-indigo-600, body.dark .bg-indigo-600 { background-color: var(--primary) !important; color: #fff !important; }
+<<<<<<< HEAD
 
 /* Premium dark mode gradients for landing page */
 .dark .landing-main {
@@ -274,3 +275,5 @@ header {
     }
   }
 }
+=======
+>>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
