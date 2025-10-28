@@ -1,148 +1,315 @@
-# ERP Application (Web and Mobile)
+# EduTrack - Student Management System
 
-This is a modern, responsive ERP (Enterprise Resource Planning) application built with Next.js and React for the web, and Expo React Native for mobile. It provides a comprehensive dashboard and modules for students, including attendance, exams, fees, grades, timetable, analytics, and feedback.
+A comprehensive, modern ERP (Enterprise Resource Planning) application built with Next.js and React for managing student information, attendance, grades, fees, and more. Features role-based access for students, teachers, and administrators with a responsive design and dark mode support.
 
-## Features
+## 🚀 Features
 
-- **User Authentication:** Secure login with NextAuth.js (web) and mock authentication (mobile).
-- **Responsive Sidebar Navigation:** Role-based menu items for students.
-- **Profile Menu:** Accessible user profile with settings and logout options.
-- **Dark Mode Support:** Toggle between light and dark themes (web).
-- **Notifications:** Real-time notification popup (web).
-- **Modular Design:** Separate components for Dashboard, Attendance, Exams, Fees, Grades, Timetable, Analytics, and Feedback.
-- **Localization:** Internationalization support with i18next (web).
-- **Charts and Analytics:** Visualize data with Chart.js and react-chartjs-2 (web).
-- **Firebase Integration:** Backend services and authentication (web).
-- **PDF and Screenshot Export:** Using jspdf and html2canvas (web).
-- **Mobile App:** Native Android app with similar features, built with Expo.
+### Core Functionality
+- **Multi-Role Authentication**: Secure login system supporting students, teachers, and administrators
+- **Student Management**: Complete student profile and enrollment management
+- **Attendance Tracking**: Daily and monthly attendance monitoring with reports
+- **Grade Management**: Record marks, calculate grades, and generate transcripts
+- **Fee Management**: Comprehensive fee tracking with online payment integration
+- **Exam Management**: Create timetables, manage exam schedules and results
+- **Timetable Management**: Automated schedule creation and management
+- **Analytics & Reports**: Performance insights and comprehensive reporting
+- **Notifications**: Real-time notifications and announcements
+- **Feedback System**: Collect and manage feedback from students and staff
 
-## Getting Started
+### Technical Features
+- **Responsive Design**: Mobile-first approach with adaptive layouts
+- **Dark Mode**: Toggle between light and dark themes
+- **Internationalization**: Multi-language support (English, Hindi, Tamil, Spanish)
+- **Real-time Updates**: Live notifications and data synchronization
+- **PDF Generation**: Export reports, receipts, and transcripts
+- **Payment Integration**: Secure online fee payments via Cashfree
+- **Data Export**: Screenshot and PDF export capabilities
 
-### Prerequisites
+## 🛠️ Technology Stack
 
-- Node.js (v18 or later recommended)
-- npm or yarn package manager
-- For mobile: Expo CLI and Android Studio (for Android emulator)
+### Frontend
+- **Next.js 15** - React framework with App Router
+- **React 19** - UI library with hooks and modern features
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Lucide React** - Modern icon library
 
-### Installation
+### Backend & Database
+- **Supabase** - PostgreSQL database with real-time capabilities
+- **Firebase** - Authentication and additional services
+- **NextAuth.js** - Authentication framework
 
-1. Clone the repository:
+### Integrations
+- **Cashfree** - Payment gateway for fee collection
+- **EmailJS** - Email notifications and communications
+- **Chart.js** - Data visualization and analytics
+- **html2canvas** - Screenshot generation
+- **jspdf** - PDF document creation
 
+### Development Tools
+- **ESLint** - Code linting and quality
+- **PostCSS** - CSS processing
+- **Vercel** - Deployment platform
+
+## 📋 Prerequisites
+
+- **Node.js**: v18 or later
+- **npm** or **yarn**: Package manager
+- **Git**: Version control
+
+## 🚀 Quick Start
+
+### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd erp
+git clone https://github.com/AbdulAhad0007/edutrack.git
+cd edutrack
 ```
 
-2. Install dependencies for web app:
-
+### 2. Install Dependencies
 ```bash
 npm install
-# or
-yarn install
 ```
 
-3. Run the development server for web:
+### 3. Environment Setup
+Create a `.env.local` file in the root directory with the following variables:
 
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+
+# Firebase Configuration
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_firebase_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_firebase_app_id
+
+# NextAuth Configuration
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_secret
+
+# Cashfree Payment Gateway (for production)
+CASHFREE_APP_ID=your_cashfree_app_id
+CASHFREE_SECRET_KEY=your_cashfree_secret_key
+CASHFREE_BASE_URL=https://api.cashfree.com/pg
+
+# EmailJS (optional)
+EMAILJS_SERVICE_ID=your_emailjs_service_id
+EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+EMAILJS_USER_ID=your_emailjs_user_id
+```
+
+### 4. Database Setup
+Run the provided SQL schema files to set up your database:
+- `schema-students.sql`
+- `schema-teachers.sql`
+- `schema-attendance.sql`
+- `schema-exams.sql`
+- `schema-fees.sql`
+- `schema-grades.sql`
+- `schema-payments.sql`
+- `schema-timetable.sql`
+- `schema-notifications.sql`
+- `schema-meetings.sql`
+- `schema-admin-notice.sql`
+- `schema-teacher-notifications.sql`
+- `schema-exam-results.sql`
+
+### 5. Run the Development Server
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Mobile App Setup
+## 📱 User Roles & Access
 
-1. Navigate to the mobile app directory:
+### Student Portal (`/erp/[student-id]`)
+- View personal dashboard with attendance, grades, and fees
+- Access timetable and exam schedules
+- Make fee payments online
+- Submit feedback and view notifications
+- Download receipts and reports
 
-```bash
-cd erp-mobile
+### Teacher Portal (`/erp/[teacher-id]`)
+- Manage student attendance and grades
+- Create and manage exam schedules
+- Handle fee collection and verification
+- Access student performance analytics
+- Send notifications and announcements
+
+### Admin Portal (`/admin`)
+- Full system administration
+- User management (students, teachers)
+- System configuration and settings
+- Advanced reporting and analytics
+- Payment gateway management
+
+## 💳 Payment Integration
+
+The system integrates with Cashfree payment gateway for secure online fee collection:
+
+### Test Mode (Development)
+- Use test card: `4111 1111 1111 1111`
+- CVV: `123`
+- Expiry: Any future date
+- OTP: `123456`
+
+### Production Setup
+1. Sign up at [Cashfree Merchant Dashboard](https://merchant.cashfree.com/)
+2. Complete KYC verification
+3. Add bank account for settlements
+4. Get production API credentials
+5. Update environment variables
+
+## 🌐 Internationalization
+
+The application supports multiple languages:
+- **English** (en)
+- **Hindi** (hi)
+- **Tamil** (ta)
+- **Spanish** (es)
+
+Language switching is available in the settings panel.
+
+## 📊 API Endpoints
+
+### Authentication
+- `POST /api/auth/[...nextauth]` - NextAuth.js authentication
+
+### Student APIs
+- `GET /api/student/fees` - Get student fees
+- `GET /api/student/attendance` - Get attendance records
+- `GET /api/student/exams` - Get exam schedules
+- `GET /api/student/grades` - Get grade records
+- `GET /api/student/timetable` - Get timetable
+- `GET /api/student/notifications` - Get notifications
+
+### Teacher APIs
+- `GET/POST /api/teacher/students` - Manage students
+- `GET/POST /api/teacher/attendance` - Manage attendance
+- `GET/POST /api/teacher/exams` - Manage exams
+- `GET/POST /api/teacher/fees` - Manage fees
+- `GET/POST /api/teacher/grades` - Manage grades
+- `GET/POST /api/teacher/timetable` - Manage timetable
+
+### Admin APIs
+- `GET/POST /api/admin/students` - Student management
+- `GET/POST /api/admin/teachers` - Teacher management
+- `GET/POST /api/admin/attendance` - Bulk attendance operations
+- `GET/POST /api/admin/exams` - Exam management
+- `GET/POST /api/admin/fees` - Fee management
+- `GET/POST /api/admin/grades` - Grade management
+- `GET/POST /api/admin/timetable` - Timetable management
+- `GET/POST /api/admin/notifications` - Notification management
+
+### Payment APIs
+- `POST /api/payments/cashfree` - Initiate payment
+- `GET /api/payments/cashfree` - Verify payment status
+
+## 🏗️ Project Structure
+
+```
+edutrack/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── admin/             # Admin pages
+│   │   ├── api/               # API routes
+│   │   ├── auth/              # Authentication pages
+│   │   ├── erp/[id]/          # Dynamic ERP pages
+│   │   ├── landing/           # Landing page
+│   │   └── ...
+│   ├── components/            # Reusable React components
+│   │   ├── StudentFees.jsx    # Fee management component
+│   │   ├── TeacherDashboard.jsx
+│   │   └── ...
+│   ├── lib/                   # Utility libraries
+│   │   ├── firebaseClient.js  # Firebase configuration
+│   │   ├── i18n.js           # Internationalization
+│   │   └── ...
+│   └── providers/            # Context providers
+│       ├── AuthProvider.js   # Authentication context
+│       └── I18nProvider.js   # Language context
+├── public/                    # Static assets
+├── schema-*.sql              # Database schemas
+├── PAYMENT_*.md              # Payment documentation
+├── test-cashfree.js          # Payment testing script
+└── README.md
 ```
 
-2. Install dependencies:
+## 🧪 Testing
 
+### Payment Testing
 ```bash
-npm install
+# Test Cashfree API connection
+node test-cashfree.js
+
+# Open HTML test page
+open test-cashfree-checkout.html
 ```
 
-3. Start the Expo development server:
-
+### Development Testing
 ```bash
+# Run linting
+npm run lint
+
+# Build for production
+npm run build
+
+# Start production server
 npm start
 ```
 
-4. Use the Expo Go app on your Android device or run on an emulator to test.
+## 🚀 Deployment
 
-## Project Structure
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Add environment variables in Vercel dashboard
+3. Deploy automatically on push
 
-- `src/components/` - Reusable React components like Header, Sidebar, NotificationPopup, etc. (web).
-- `src/app/erp/[id]/` - Student ERP page with dynamic routing based on user ID (web).
-- `src/app/auth/` - Authentication pages and logic (web).
-- `src/lib/` - Utility functions and Firebase client setup (web).
-- `src/providers/` - Context providers for authentication and internationalization (web).
-- `public/` - Static assets like images and icons (web).
-- `erp-mobile/` - React Native mobile app for students.
-  - `erp-mobile/screens/` - Screen components for mobile app.
-  - `erp-mobile/lib/` - Utility functions for mobile app.
-  - `erp-mobile/assets/` - Images and icons for mobile app.
-
-## Scripts
-
-- `npm run dev` - Start development server (web).
-- `npm run build` - Build production-ready app (web).
-- `npm start` - Start production server (web).
-- `npm run lint` - Run ESLint for code quality (web).
-- `cd erp-mobile && npm start` - Start Expo development server for mobile app.
-
-## Technologies Used
-
-- Next.js 15
-- React 19
-- Tailwind CSS 4
-- NextAuth.js for authentication (web)
-- Firebase for backend services (web)
-- Chart.js and react-chartjs-2 for charts (web)
-- i18next for localization (web)
-- Lucide React icons (web)
-- Expo and React Native for mobile app
-
-## Deployment
-
-The web app can be deployed easily on Vercel or any other Node.js hosting platform. Refer to the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for detailed instructions.
-
-The mobile app can be built and deployed using Expo Application Services (EAS). To build the Android APK:
-
-1. Install EAS CLI globally:
-
+### Manual Deployment
 ```bash
-npm install -g eas-cli
+# Build the application
+npm run build
+
+# Start production server
+npm start
 ```
 
-2. Log in to your Expo account:
+## 📚 Documentation
 
-```bash
-eas login
-```
+- [Payment Configuration](PAYMENT_CONFIG.md)
+- [Payment Settlement Info](PAYMENT_SETTLEMENT_INFO.md)
+- [Payment Testing Guide](PAYMENT_TESTING_GUIDE.md)
+- [Database Schemas](schema-*.sql)
 
-3. Configure your build profile in `erp-mobile/eas.json`.
+## 🤝 Contributing
 
-4. Run the build command:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-```bash
-cd erp-mobile
-eas build --platform android --profile production
-```
+## 📝 License
 
-5. After the build completes, download the APK from the Expo build page linked in the terminal output.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Download Mobile App
+## 📞 Support
 
-The Android APK build is currently in progress or may need to be built using the above steps. Once available, the APK can be downloaded from the Expo build page. Check the build logs at https://expo.dev/accounts/ahadabdul9976/projects/erp-mobile for the latest status.
+- **Email**: abdulahad0007@gmail.com
+- **GitHub Issues**: [Create an issue](https://github.com/AbdulAhad0007/edutrack/issues)
+- **Documentation**: Check the `/docs` folder for detailed guides
 
-## Contributing
+## 🙏 Acknowledgments
 
-Contributions are welcome! Please open issues or pull requests for improvements or bug fixes.
+- **Cashfree** for payment gateway services
+- **Supabase** for database and real-time features
+- **Firebase** for authentication
+- **Next.js** team for the amazing framework
+- **Tailwind CSS** for the utility-first approach
 
-## License
+---
 
-This project is licensed under the MIT License.
+**Built with ❤️ for educational institutions worldwide**
