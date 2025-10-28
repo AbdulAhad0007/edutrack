@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cashfree Test Checkout</title>
+    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+</head>
+<body>
+    <h1>Test Cashfree Checkout</h1>
+    <button onclick="testPayment()">Test Payment</button>
+    <div id="logs" style="margin-top: 20px; padding: 10px; background: #f0f0f0; font-family: monospace; white-space: pre-wrap;"></div>
+
+    <script>
+        function log(message) {
+            const logs = document.getElementById('logs');
+            logs.textContent += '\n' + new Date().toLocaleTimeString() + ': ' + message;
+            console.log(message);
+        }
+
+        async function testPayment() {
+            log('Starting payment test...');
+            
+            try {
+                // Step 1: Create payment session via API
+                log('Calling /api/payments/cashfree...');
+                const response = await fetch('http://localhost:3000/api/payments/cashfree', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        feeIds: ['test_fee_1'],
+                        studentUid: 'test_student_123',
+                        studentName: 'Test Student',
+                        studentEmail: 'test@example.com',
+                    }),
+                });
+
+                const result = await response.json();
+                log('API Response: ' + JSON.stringify(result, null, 2));
+
+                if (!result.success) {
+                    log('ERROR: ' + (result.message || result.error));
+                    return;
+                }
+
+                // Step 2: Initialize Cashfree
+                log('Initializing Cashfree SDK...');
+                log('Payment Session ID: ' + result.paymentSessionId);
+                
+                const cashfree = Cashfree({
+                    mode: 'sandbox'
+                });
+                
+                log('Cashfree SDK initialized');
+
+                // Step 3: Open checkout
+                const checkoutOptions = {
+                    paymentSessionId: result.paymentSessionId,
+                    returnUrl: window.location.href
+                };
+
+                log('Checkout options: ' + JSON.stringify(checkoutOptions));
+                log('Opening checkout...');
+
+                cashfree.checkout(checkoutOptions).then(function(checkoutResult) {
+                    log('Checkout complete: ' + JSON.stringify(checkoutResult));
+                }).catch(function(error) {
+                    log('Checkout error: ' + JSON.stringify(error));
+                });
+
+            } catch (error) {
+                log('ERROR: ' + error.message);
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
