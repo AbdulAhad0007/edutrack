@@ -1,8 +1,8 @@
 // src/components/Fees.jsx
 export default function Fees() {
   const feeStructure = [
-    { term: 'Term 1', amount: 1500, due: '2025-09-15' },
-    { term: 'Term 2', amount: 1500, due: '2026-01-10' },
+    { term: 'Term 1', amount: 10000, due: '2025-09-15' },
+    { term: 'Term 2', amount: 15000, due: '2026-01-10' },
   ];
 
   const upcomingDues = feeStructure.filter(f => new Date(f.due) > new Date()).map(f => f);
@@ -16,7 +16,8 @@ export default function Fees() {
           <h3 className="font-semibold text-gray-800 dark:text-gray-200">Fee Structure</h3>
           <ul className="mt-3 text-sm text-gray-600 dark:text-gray-300">
             {feeStructure.map((f, idx) => (
-              <li key={idx} className="py-2 border-b dark:border-gray-700">{f.term} — <span className="font-semibold">${f.amount}</span> (Due: {f.due})</li>
+              <li key={idx} className="py-2 border-b dark:border-gray-700">{f.term} — <span className="font-semibold">Rs
+                . {f.amount}</span> (Due: {f.due})</li>
             ))}
           </ul>
         </div>
@@ -30,7 +31,7 @@ export default function Fees() {
           <div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
             <p>Upcoming dues:</p>
             <ul className="mt-2">
-              {upcomingDues.map((u, i) => <li key={i}>{u.term} — Due {u.due} — <span className="font-semibold">${u.amount}</span></li>)}
+              {upcomingDues.map((u, i) => <li key={i}>{u.term} — Due {u.due} — <span className="font-semibold">Rs. {u.amount}</span></li>)}
             </ul>
           </div>
         </div>

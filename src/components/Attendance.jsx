@@ -27,10 +27,10 @@ export default function Attendance() {
 >>>>>>> e72ad566b79fdad6a6790dcdbf09158b3490aec0
   // monthly breakdown and recent absent days
   const monthly = [
-    { month: 'January', present: 20, total: 22 },
-    { month: 'February', present: 18, total: 20 },
-    { month: 'March', present: 21, total: 22 },
-    { month: 'April', present: 19, total: 21 },
+    { month: 'January', present: 20, total: 31 },
+    { month: 'February', present: 18, total: 28 },
+    { month: 'March', present: 21, total: 31 },
+    { month: 'April', present: 19, total: 30 },
     { month: 'May', present: 22, total: 22 },
   ];
 
